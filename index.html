@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Scramble Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Word Scramble Game</h1>
+        
+        <div class="difficulty-section">
+            <h2>Choose Difficulty:</h2>
+            <button id="easy-btn">Easy (1 point)</button>
+            <button id="medium-btn">Medium (2 points)</button>
+            <button id="hard-btn">Hard (3 points)</button>
+        </div>
+        
+        <div class="game-section">
+            <div class="timer">Time: <span id="time-left">60</span> seconds</div>
+            <div class="score">Score: <span id="current-score">0</span></div>
+            <div class="game-section" id="game-section">
+
+            
+            <div class="scrambled-word">
+                <h3>Unscramble this word:</h3>
+                <div id="scrambled-display">Click a difficulty to start!</div>
+            </div>
+            
+            <div class="input-section">
+                <input type="text" id="user-answer" placeholder="Type your answer here">
+                <button id="submit-btn">Submit</button>
+                <button id="skip-btn">Skip Word</button>
+            </div>
+            
+            <div class="feedback" id="feedback-message"></div>
+        </div>
+        
+        <div class="game-over">
+            <h2 id="final-message">Game Over!</h2>
+            <div id="final-score">Final Score: 0</div>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
