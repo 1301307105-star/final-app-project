@@ -27,7 +27,7 @@ function scrambleWord(word) {
     let letters = word.split("");
 
 }
-//26-85 is everything for my buttons and how they work
+//26-91 is everything for my buttons and how they work
 // Add event listeners to difficulty buttons
 easyBtn.addEventListener("click", startEasyGame);
 mediumBtn.addEventListener("click", startMediumGame );
@@ -48,7 +48,7 @@ function startEasyGame() {
     skipBtn.addEventListener("click", skipWord);
     
     currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
+    scrambledWord = scrambleWordProperly(currentWord);
     scrambledDisplay.innerText = scrambledWord;
     
     console.log("Answer is: " + currentWord);
@@ -66,9 +66,9 @@ function startMediumGame() {
     skipBtn.addEventListener("click", skipWord);
     
     currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
+    scrambledWord = scrambleWordProperly(currentWord);
     scrambledDisplay.innerText = scrambledWord;
-    
+
     console.log("Answer is: " + currentWord);
 }
 
@@ -84,7 +84,7 @@ function startHardGame() {
     skipBtn.addEventListener("click", skipWord);
     
     currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
+    scrambledWord = scrambleWordProperly(currentWord);
     scrambledDisplay.innerText = scrambledWord;
     
     console.log("Answer is: " + currentWord);
@@ -247,6 +247,8 @@ function startEasyGame() {
     document.querySelector(".difficulty-section").style.display = "none";
     
     startTimer(); // Add this line!
+    // Show the dropdown menu
+    document.querySelector(".menu-section").style.display = "block";
     
     currentWord = getRandomWord();
     scrambledWord = scrambleWord(currentWord);
@@ -287,38 +289,31 @@ let skipBtn = document.getElementById("skip-btn");
 skipBtn.addEventListener("click", skipWord);
 
 function skipWord() {
-    // Show what the answer was
     feedbackMessage.innerText = "Skipped! The word was: " + currentWord;
     feedbackMessage.style.color = "orange";
     
-    // Clear the input field
     userAnswer.value = "";
     
-    // Get a new word after a short delay
     setTimeout(function() {
         feedbackMessage.innerText = "";
         currentWord = getRandomWord();
-        scrambledWord = scrambleWord(currentWord);
+        scrambledWord = scrambleWordProperly(currentWord); // Use new function
         scrambledDisplay.innerText = scrambledWord;
         console.log("New word answer is: " + currentWord);
     }, 1500);
 }
 
-
 function getNewWord() {
-    // Clear the input field
     userAnswer.value = "";
-    
-    // Clear feedback message
     feedbackMessage.innerText = "";
     
-    // Get a new word and scramble it
     currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
+    scrambledWord = scrambleWordProperly(currentWord); // Use new function
     scrambledDisplay.innerText = scrambledWord;
     
-    console.log("New word answer is: " + currentWord); // For testing
+    console.log("New word answer is: " + currentWord);
 }
+
 
 function checkAnswer() {
     let playerGuess = userAnswer.value.toLowerCase();
@@ -446,3 +441,28 @@ function restartCurrentGame() {
 }
 
 
+
+
+
+function scrambleWordProperly(word) {
+    let scrambled = word;
+    let attempts = 0;
+    
+    // Keep scrambling until it's different from the original
+    while (scrambled === word && attempts < 10) {
+        scrambled = scrambleWord(word);
+        attempts = attempts + 1;
+    }
+    
+    // If still the same after 10 tries, manually scramble it
+    if (scrambled === word && word.length > 1) {
+        let letters = word.split("");
+        // Swap first and last letters
+        let temp = letters[0];
+        letters[0] = letters[letters.length - 1];
+        letters[letters.length - 1] = temp;
+        scrambled = letters.join("");
+    }
+    
+    return scrambled;
+}
