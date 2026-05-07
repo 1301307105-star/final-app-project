@@ -35,64 +35,6 @@ hardBtn.addEventListener("click", startHardGame );
 playAgainBtn.addEventListener("click", resetGame);
     // More code will go here later
 
-
-function startEasyGame() {
-    currentDifficulty = "easy";
-    gameSection.style.display = "block";
-    document.querySelector(".difficulty-section").style.display = "none";
-    
-    startTimer();
-    
-    // Add event listeners for game buttons
-    submitBtn.addEventListener("click", checkAnswer);
-    skipBtn.addEventListener("click", skipWord);
-    
-    currentWord = getRandomWord();
-    scrambledWord = scrambleWordProperly(currentWord);
-    scrambledDisplay.innerText = scrambledWord;
-    
-    console.log("Answer is: " + currentWord);
-}
-
-function startMediumGame() {
-    currentDifficulty = "medium";
-    gameSection.style.display = "block";
-    document.querySelector(".difficulty-section").style.display = "none";
-    
-    startTimer();
-    
-    // Add event listeners for game buttons
-    submitBtn.addEventListener("click", checkAnswer);
-    skipBtn.addEventListener("click", skipWord);
-    
-    currentWord = getRandomWord();
-    scrambledWord = scrambleWordProperly(currentWord);
-    scrambledDisplay.innerText = scrambledWord;
-
-    console.log("Answer is: " + currentWord);
-}
-
-function startHardGame() {
-    currentDifficulty = "hard";
-    gameSection.style.display = "block";
-    document.querySelector(".difficulty-section").style.display = "none";
-    
-    startTimer();
-    
-    // Add event listeners for game buttons
-    submitBtn.addEventListener("click", checkAnswer);
-    skipBtn.addEventListener("click", skipWord);
-    
-    currentWord = getRandomWord();
-    scrambledWord = scrambleWordProperly(currentWord);
-    scrambledDisplay.innerText = scrambledWord;
-    
-    console.log("Answer is: " + currentWord);
-}
-
-
-
-
 function getRandomWord() {
     let wordList;
     
@@ -144,50 +86,40 @@ function scrambleWord(word) {
 
 function startEasyGame() {
     currentDifficulty = "easy";
-    console.log("Easy game started!");
-    
-    // Show game section, hide difficulty buttons
     gameSection.style.display = "block";
     document.querySelector(".difficulty-section").style.display = "none";
     
-    // Get a random word and scramble it
+    startTimer(); // Add this line!
+    // Show the dropdown menu
+    document.querySelector(".menu-section").style.display = "block";
+    
     currentWord = getRandomWord();
     scrambledWord = scrambleWord(currentWord);
     scrambledDisplay.innerText = scrambledWord;
-    
-    console.log("Answer is: " + currentWord); // This helps you test!
 }
 
 function startMediumGame() {
     currentDifficulty = "medium";
-    console.log("Medium game started!");
-    
-    // Show game section, hide difficulty buttons
     gameSection.style.display = "block";
     document.querySelector(".difficulty-section").style.display = "none";
     
-    // Get a random word and scramble it
+    startTimer(); // Add this line!
+    
     currentWord = getRandomWord();
     scrambledWord = scrambleWord(currentWord);
     scrambledDisplay.innerText = scrambledWord;
-    
-    console.log("Answer is: " + currentWord); // This helps you test!
 }
 
 function startHardGame() {
     currentDifficulty = "hard";
-    console.log("Hard game started!");
-    
-    // Show game section, hide difficulty buttons
     gameSection.style.display = "block";
     document.querySelector(".difficulty-section").style.display = "none";
     
-    // Get a random word and scramble it
+    startTimer(); // Add this line!
+    
     currentWord = getRandomWord();
     scrambledWord = scrambleWord(currentWord);
     scrambledDisplay.innerText = scrambledWord;
-    
-    console.log("Answer is: " + currentWord); // This helps you test!
 }
 //Scramble system ends HERE!!!
 
@@ -239,44 +171,6 @@ function endGame() {
     
     // Show final score
     document.getElementById("final-score").innerText = "Final Score: " + score;
-}
-
-function startEasyGame() {
-    currentDifficulty = "easy";
-    gameSection.style.display = "block";
-    document.querySelector(".difficulty-section").style.display = "none";
-    
-    startTimer(); // Add this line!
-    // Show the dropdown menu
-    document.querySelector(".menu-section").style.display = "block";
-    
-    currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
-    scrambledDisplay.innerText = scrambledWord;
-}
-
-function startMediumGame() {
-    currentDifficulty = "medium";
-    gameSection.style.display = "block";
-    document.querySelector(".difficulty-section").style.display = "none";
-    
-    startTimer(); // Add this line!
-    
-    currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
-    scrambledDisplay.innerText = scrambledWord;
-}
-
-function startHardGame() {
-    currentDifficulty = "hard";
-    gameSection.style.display = "block";
-    document.querySelector(".difficulty-section").style.display = "none";
-    
-    startTimer(); // Add this line!
-    
-    currentWord = getRandomWord();
-    scrambledWord = scrambleWord(currentWord);
-    scrambledDisplay.innerText = scrambledWord;
 }
 
 //timer function ends here
