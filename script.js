@@ -293,19 +293,19 @@ function endGame() {
 let gameMenu = document.getElementById("game-menu");
 
 // Add event listener for menu changes
-gameMenu.addEventListener("change", handleMenuChange);
+gameMenu.addEventListener("change", handleMenuChange); //This line: Tells the browser to "listen" for when the user selects something different in the dropdown menu. When the menu changes, it will run the handleMenuChange function.
 
-function handleMenuChange() {
-    let selectedOption = gameMenu.value;
+function handleMenuChange() { //This line: Creates a function called handleMenuChange that will run whenever the menu selection changes.
+    let selectedOption = gameMenu.value; //This line: Gets the value of whatever option the user selected from the dropdown menu and stores it in a variable called selectedOption. For example, if they picked "Back to Main Menu", selectedOption will be "main".
     
-    if (selectedOption === "main") {
+    if (selectedOption === "main") { // Check if the user selected the "main" option. If they did, run the goBackToMain() function.
         goBackToMain();
-    } else if (selectedOption === "restart") {
+    } else if (selectedOption === "restart") { // If the user didn't select "main", check if they selected "restart". If they did, run the restartCurrentGame() function.
         restartCurrentGame();
     }
     
     // Reset the dropdown to default
-    gameMenu.value = "";
+    gameMenu.value = ""; //Resets the dropdown menu back to the default option (the one that says "⚙️ Menu"). This makes it ready for the next selection
 }
 
 function goBackToMain() {
